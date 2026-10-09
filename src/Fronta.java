@@ -115,6 +115,8 @@ public class Fronta {
 
         fronta = newFronta;
         capacity = newCapacity;
+        front = 0;
+        rear = size-1;
 
     }
 }

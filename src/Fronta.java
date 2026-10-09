@@ -16,66 +16,81 @@ public class Fronta {
                 size++;
             }
             else {
-                System.out.println("\nKuchařky ho vyhodily");
                 throw new CapacityException("Fronta je plná");
             }
         } catch (CapacityException e) {
-            System.out.println("Haf haf");
+            System.out.println("\nKuchařky ho vyhodily");
         }
     }
 
     public void serveFirst(){
-        if (size != 0) {
-            Zak zak = fronta[front];
+        try {
+            if (size != 0) {
+                Zak zak = fronta[front];
 
-            System.out.println("\nObsloužení žáka: " + zak.getJmeno() + " " + zak.getPrijmeni() + ", " + zak.getCisloChodu());
+                System.out.println("\nObsloužení žáka: " + zak.getJmeno() + " " + zak.getPrijmeni() + ", " + zak.getCisloChodu());
 
-            fronta[front] = null;
-            front = (front + 1) % capacity;
-            size--;
-        }
-        else{
-            throw new CapacityException("Fronta je prázdná");
+                fronta[front] = null;
+                front = (front + 1) % capacity;
+                size--;
+            }
+            else{
+                throw new CapacityException("Fronta je prázdná");
+            }
+        } catch (CapacityException e) {
+            System.out.println("Fronta je prázdná");
         }
     }
 
     public void printFirst(){
-        if (size != 0) {
-            Zak zak = fronta[front];
-            System.out.println("\nDalší ve frontě: " + zak.getJmeno() + " " + zak.getPrijmeni() + ", " + zak.getCisloChodu());
-        }
-        else{
-            throw new CapacityException("Fronta je prázdná");
+        try {
+            if (size != 0) {
+                Zak zak = fronta[front];
+                System.out.println("\nDalší ve frontě: " + zak.getJmeno() + " " + zak.getPrijmeni() + ", " + zak.getCisloChodu());
+            }
+            else{
+                throw new CapacityException("Fronta je prázdná");
+            }
+        } catch (CapacityException e) {
+            System.out.println("Fronta je prázdná");
         }
     }
 
     public void printWithSurname(String surname){
-        if (size != 0) {
-            System.out.println("\nVýpis všech ve frontě s příjmením \"" + surname + "\"");
-            for (int i = 0; i < size; i++) {
-                int index = (front + i) % capacity;
-                if (surname.equals(fronta[index].getPrijmeni())) {
-                    System.out.println(fronta[index].toString());
-                }
+        try {
+            if (size != 0) {
+                System.out.println("\nVýpis všech ve frontě s příjmením \"" + surname + "\"");
+                for (int i = 0; i < size; i++) {
+                    int index = (front + i) % capacity;
+                    if (surname.equals(fronta[index].getPrijmeni())) {
+                        System.out.println(fronta[index].toString());
+                    }
 
+                }
             }
-        }
-        else{
-            throw new CapacityException("Fronta je prázdná");
+            else{
+                throw new CapacityException("Fronta je prázdná");
+            }
+        } catch (CapacityException e) {
+            System.out.println("Fronta je prázdná");
         }
     }
 
     public void printAll(){
-        if (size != 0) {
+        try {
+            if (size != 0) {
 
-            System.out.println("\nVýpis všech ve frontě");
-            for (int i = 0; i < size; i++) {
-                int index = (front + i) % capacity;
-                System.out.println(fronta[index].toString());
+                System.out.println("\nVýpis všech ve frontě");
+                for (int i = 0; i < size; i++) {
+                    int index = (front + i) % capacity;
+                    System.out.println(fronta[index].toString());
+                }
             }
-        }
-        else{
-            throw new CapacityException("Fronta je prázdná");
+            else{
+                throw new CapacityException("Fronta je prázdná");
+            }
+        } catch (CapacityException e) {
+            System.out.println("Fronta je prázdná");
         }
     }
 
@@ -97,7 +112,7 @@ public class Fronta {
                 throw new CapacityException("Fronta je prázdná");
             }
         } catch (CapacityException e) {
-            throw new RuntimeException(e);
+            System.out.println("Fronta je prázdná");
         }
     }
 
